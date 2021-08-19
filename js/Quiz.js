@@ -30,43 +30,35 @@ class Quiz {
 
   play(){
     //write code here to hide question elements
-    input1.hide();
-    title.hide();
-    button.hide();
-    input2.hide();
+    question.hide();
     //write code to change the background color here
     background("yellow");
     //write code to show a heading for showing the result of Quiz
-    FormData.title.hide();
-    textSize(40);
-    text("Results of the Quiz", 120,100);
+   // FormData.title.hide();
+    textSize(20);
+    fill("black");
+    text("Results of the Quiz", 120,50);
     //call getContestantInfo( ) here
     Contestant.getPlayerInfo();
     //write condition to check if contestantInfor is not undefined
+    text("+NOTE: Contestant who answered correct are highlighted in green color!",130,270);
     if(allContestants != undefined){
-      var positionY = 130;
+      var positionY = 300;
       for(var plr in allContestants){
         positionY = positionY+20;
             textSize(15);
-            if(plr === "player" + player.index){
+            var correctAns = "2";
+            if(correctAns === allContestants[plr].answer){
               fill("green");
           }
           else{
             fill("red");
         }
-        text(allContestants[plr].name + ":" + allContestants[plr] .distance,120,positionY);
+        text(allContestants[plr].name + ":" + allContestants[plr].answer,150,positionY);
       }
     }
     //write code to add a note here
-    text("+NOTE: Contestant who answered correct are highlighted in green color!",130,230);
     //write code to highlight contest who answered correctly
-    for(var plr in allCOntestants){
-      var correctAns = "2";
-      if(correctAns === allContestants[plr].answer)
-      fill("Green")
-      else
-      fill("red");
-    }
   }
 
 }
